@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Echelon matrix and matrix determinant</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bignumber.js/9.0.0/bignumber.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+	<link rel="stylesheet" href="style.css">
+	<script src="main.js"></script>
+</head>
+
+<body>
+	<main>
+		<h1>Echelon matrix and matrix determinant</h1>
+		<section>
+			<h2>Matrix</h2>
+			<div class="scrollable">
+				<table>
+					<tr v-for="(row, row_index) in matrix">
+						<td v-for="(column, column_index) in row">
+							<input type="text" pattern="(?:-?\d+(\.\d+)?|-?\d+ ?\/ ?\d+)" required
+								v-model="matrix[row_index][column_index]" @change="on_matrix_change">
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="inline gutter">
+				<strong class="clear block">Nº of rows:</strong>
+				<button class="spin inline left" @click="remove_row"><span>&minus;</span></button>
+				<input type="number" v-model="row_count" min="1" step="1" @input="resize_matrix" pattern="\d+" required>
+				<button class="spin inline right" @click="add_row"><span>&plus;</span></button>
+			</div>
+			<div class="inline gutter">
+				<strong class="clear block">Nº of columns:</strong>
+				<button class="spin inline left" @click="remove_column"><span>&minus;</span></button>
+				<input type="number" v-model="column_count" min="1" step="1" @input="resize_matrix" pattern="\d+" required>
+				<button class="spin inline right" @click="add_column"><span>&plus;</span></button>
+			</div>
+			<br>
+			<label>
+				<input type="checkbox" v-model="fractions_in_result" @change="on_matrix_change">
+				<span>show fractions in result</span>
+			</label>
+		</section>
+		<section v-if="echelon_matrix !== false">
+			<h2>Echelon matrix</h2>
+			<div class="scrollable">
+				<table>
+					<tr v-for="(row, row_index) in echelon_matrix">
+						<td v-for="(column, column_index) in row">
+							<input type="text" readonly v-model="echelon_matrix[row_index][column_index]">
+						</td>
+					</tr>
+				</table>
+			</div>
+		</section>
+		<section v-if="determinant !== false">
+			<h2>Matrix determinant</h2>
+			<input type="text" readonly v-model="determinant">
+		</section>
+	</main>
+</body>
+
+</html>
