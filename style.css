@@ -3,6 +3,7 @@ main {
 	margin: 0 auto;
 	text-align: center;
 	line-height: 1.5rem;
+	font-size: 16px;
 }
 
 .scrollable {
@@ -13,7 +14,6 @@ table {
 	margin: 0 auto;
 	border-collapse: collapse;
 	border-spacing: 0;
-	margin-bottom: 10px;
 }
 
 h1,
@@ -59,8 +59,12 @@ table table td>input:focus {
 	box-shadow: none;
 }
 
+table td {
+	max-width: 160px;
+}
+
 input[type="number"] {
-	width: 50px;
+	width: calc(100% - 48px);
 	text-align: center;
 	padding: 0 0.5rem;
 	display: inline-block;

@@ -28,19 +28,26 @@
 					</tr>
 				</table>
 			</div>
-			<div class="inline gutter">
-				<strong class="clear block">Nº of rows:</strong>
-				<button class="spin inline left" @click="remove_row"><span>&minus;</span></button>
-				<input type="number" v-model="row_count" min="1" step="1" @input="resize_matrix" pattern="\d+" required>
-				<button class="spin inline right" @click="add_row"><span>&plus;</span></button>
-			</div>
-			<div class="inline gutter">
-				<strong class="clear block">Nº of columns:</strong>
-				<button class="spin inline left" @click="remove_column"><span>&minus;</span></button>
-				<input type="number" v-model="column_count" min="1" step="1" @input="resize_matrix" pattern="\d+" required>
-				<button class="spin inline right" @click="add_column"><span>&plus;</span></button>
-			</div>
-			<br>
+			<table>
+				<tr>
+					<td>
+						<div class="gutter">
+							<strong class="clear block">Nº of rows:</strong>
+							<button class="spin inline left" @click="remove_row"><span>&minus;</span></button>
+							<input type="number" v-model="row_count" min="1" step="1" @input="resize_matrix" pattern="\d+" required>
+							<button class="spin inline right" @click="add_row"><span>&plus;</span></button>
+						</div>
+					</td>
+					<td>
+						<div class="gutter">
+							<strong class="clear block">Nº of columns:</strong>
+							<button class="spin inline left" @click="remove_column"><span>&minus;</span></button>
+							<input type="number" v-model="column_count" min="1" step="1" @input="resize_matrix" pattern="\d+" required>
+							<button class="spin inline right" @click="add_column"><span>&plus;</span></button>
+						</div>
+					</td>
+				</tr>
+			</table>
 			<label>
 				<input type="checkbox" v-model="fractions_in_result" @change="on_matrix_change">
 				<span>show fractions in result</span>
