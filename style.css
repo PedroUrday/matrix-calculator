@@ -26,7 +26,7 @@ section {
 }
 
 input {
-	text-align: left;
+	text-align: right;
 	box-sizing: border-box;
 	display: block;
 	margin: 0 auto;
